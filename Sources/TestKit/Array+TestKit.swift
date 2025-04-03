@@ -9,8 +9,9 @@ import Foundation
 
 import XCTest
 public extension Array where Element: XCUIElement {
-    @discardableResult
+    typealias ElementPath<T> = KeyPath<XCUIElement, T>
     
+    @discardableResult
     func expectExistence(
         within timeout: TimeInterval = 2.0,
         file: StaticString = #filePath,
@@ -44,11 +45,11 @@ public extension Array where Element: XCUIElement {
         forEach { $0.tap() }
     }
     
-    func map<T>(keyPath path: KeyPath<Element, T>) -> [T] {
+    func map<T>(keyPath path: ElementPath<T>) -> [T] {
         return map { $0[keyPath: path] }
     }
     
-    subscript<T>(keyPath: KeyPath<Element, T>) -> [T] {
+    subscript<T>(keyPath: ElementPath<T>) -> [T] {
         map(keyPath: keyPath)
     }
 }

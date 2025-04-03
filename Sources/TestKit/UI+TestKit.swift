@@ -21,7 +21,6 @@ public struct UI: DynamicProperty {
         return app[keyPath: keyPath][key]
     }
     
-    
     public init(_ keyPath: ElementPath, _ key: String, app: XCUIApplication? = nil) {
         self.keyPath = keyPath
         self.key = key
