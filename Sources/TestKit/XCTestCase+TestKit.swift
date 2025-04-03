@@ -125,14 +125,15 @@ public extension XCTestCase {
     
     func expectTapability(
         in element: XCUIElement,
+        toBe value: Bool? = nil,
         timeout: TimeInterval = 5.0,
         file: StaticString = #filePath,
         line: UInt = #line
-    ) {
-    
+    ) {    
         expect(
             \.isHittable,
              in: element,
+             toBe: value,
              timeout: timeout,
              description: "is tappable",
              file: file,
